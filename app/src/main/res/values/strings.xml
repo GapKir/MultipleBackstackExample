@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MultipleBackstackExample</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_messages">Messages</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="cd_home">Home</string>
+    <string name="cd_messages">Messages</string>
+    <string name="cd_profile">Profile</string>
+    <string name="title_credentials">Credentials:</string>
+    <string name="name_title">Name:</string>
+    <string name="default_name">Default Name</string>
+    <string name="btn_edit_profile">Edit Profile</string>
+    <string name="hint_enter_new_name">Enter new name</string>
+    <string name="btn_confirm_edit_name">Confirm</string>
+    <string name="btn_cancel_edit_name">Cancel</string>
+    <string name="from">From:</string>
+    <string name="subject">Subject:</string>
+    <string name="body">Body:</string>
+    <string name="home_screen">Home Screen</string>
+    <string name="go_to_next_screen">Go to next screen</string>
+    <string name="second_screen">Second Screen</string>
+</resources>
