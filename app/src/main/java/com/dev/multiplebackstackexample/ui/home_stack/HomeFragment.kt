@@ -3,9 +3,10 @@ package com.dev.multiplebackstackexample.ui.home_stack
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.dev.multiplebackstackexample.R
 import com.dev.multiplebackstackexample.databinding.FragmentHomeBinding
+import com.dev.multiplebackstackexample.utills.Stack
+import com.dev.multiplebackstackexample.utills.openFragment
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -17,7 +18,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         _binding = FragmentHomeBinding.bind(view)
 
         binding.homeBtnGoToNextScreen.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_secondFragment)
+            openFragment(SecondFragment.newInstance(), Stack.HOME)
         }
 
     }
@@ -27,4 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         _binding = null
     }
 
+    companion object {
+        fun newInstance() = HomeFragment()
+    }
 }

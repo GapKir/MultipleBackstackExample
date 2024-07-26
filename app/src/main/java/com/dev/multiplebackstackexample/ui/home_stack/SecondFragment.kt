@@ -14,10 +14,15 @@ class SecondFragment: Fragment(R.layout.fragment_second) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSecondBinding.bind(view)
 
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance() = SecondFragment()
     }
 }

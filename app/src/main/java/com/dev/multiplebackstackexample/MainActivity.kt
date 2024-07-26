@@ -2,37 +2,54 @@ package com.dev.multiplebackstackexample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.Fragment
+import com.dev.multiplebackstackexample.ui.home_stack.HomeFragment
+import com.dev.multiplebackstackexample.ui.messages_stack.main.MessagesFragment
+import com.dev.multiplebackstackexample.ui.profile_stack.ProfileFragment
+import com.dev.multiplebackstackexample.utills.Stack
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private var navController: NavController? = null
+    private var curStack = Stack.HOME
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initNavController()
-        sutUpNavBarWithNavController()
+        openFragment(HomeFragment.newInstance(), Stack.HOME)
+        initBottomNavView()
+
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController!!.navigateUp() || super.onSupportNavigateUp()
+    private fun initBottomNavView() {
+        findViewById<BottomNavigationView>(R.id.bottom_nav).setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> openFragment(HomeFragment.newInstance(), Stack.HOME)
+                R.id.messages -> openFragment(MessagesFragment.newInstance(), Stack.MESSAGES)
+                R.id.profile -> openFragment(ProfileFragment.newInstance(), Stack.PROFILE)
+                else -> Unit
+            }
+            return@setOnItemSelectedListener true
+        }
     }
 
-    private fun initNavController() {
-        val navHostFragment = supportFragmentManager.findFragmentById(
-            R.id.nav_host_container
-        ) as NavHostFragment
-        navController = navHostFragment.navController
-    }
+    private fun openFragment(fragment: Fragment, stack: Stack) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
 
-    private fun sutUpNavBarWithNavController() {
-        findViewById<BottomNavigationView>(R.id.bottom_nav).also {
-            it.setupWithNavController(navController!!)
+        if (fragmentManager.findFragmentByTag(stack.name) != null) {
+            fragmentManager.saveBackStack(curStack.name)
+            fragmentManager.restoreBackStack(stack.name)
+            curStack = stack
+        } else {
+            curStack = stack
+            fragmentTransaction.apply {
+                replace(R.id.nav_host_container, fragment, stack.name)
+                setReorderingAllowed(true)
+                addToBackStack(stack.name)
+                commit()
+            }
         }
     }
 }
