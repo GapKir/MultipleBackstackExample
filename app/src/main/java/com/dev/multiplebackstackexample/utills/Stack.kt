@@ -1,5 +1,5 @@
 package com.dev.multiplebackstackexample.utills
 
-enum class Stack() {
+enum class Stack {
     HOME, MESSAGES, PROFILE
 }

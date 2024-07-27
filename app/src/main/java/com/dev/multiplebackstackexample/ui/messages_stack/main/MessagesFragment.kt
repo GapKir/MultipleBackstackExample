@@ -8,7 +8,6 @@ import com.dev.multiplebackstackexample.databinding.FragmentMessagesBinding
 import com.dev.multiplebackstackexample.model.MessageRepository
 import com.dev.multiplebackstackexample.ui.messages_stack.details.MessageDetailsFragment
 import com.dev.multiplebackstackexample.ui.messages_stack.details.adapters.MessagesAdapter
-import com.dev.multiplebackstackexample.ui.profile_stack.ProfileFragment
 import com.dev.multiplebackstackexample.utills.Stack
 import com.dev.multiplebackstackexample.utills.openFragment
 
