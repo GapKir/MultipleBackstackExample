@@ -12,6 +12,7 @@ import com.dev.multiplebackstackexample.utills.Stack
 import com.dev.multiplebackstackexample.utills.openFragment
 
 //first commit
+//test first commit
 class MessagesFragment: Fragment(R.layout.fragment_messages), MessagesAdapter.Listener {
 
     private var _binding: FragmentMessagesBinding? = null
